@@ -112,6 +112,26 @@ let badge = badges[membership] || "Free Member";
 console.log("Badge:", badge);
 
 
+// CHALLENGE 8 — Bitwise Permissions (The Light Switch Trick)
+
+// giving each permission its own unique number slot (powers of 2)
+const READ = 1;     // slot 1 (binary: 0001)
+const WRITE = 2;    // slot 2 (binary: 0010)
+const DELETE = 4;   // slot 3 (binary: 0100)
+const ADMIN = 8;    // slot 4 (binary: 1000)
+
+let userPerms = READ | WRITE; 
+
+// checks if the Read switch is on using '&' 
+console.log("Has read:", (userPerms & READ) ? 'Yes' : 'No'); // Yes
+// checks if the Delete switch is on
+console.log("Has delete:", (userPerms & DELETE) ? 'Yes' : 'No'); // No
+// adding Delete to the user's permissions box
+userPerms |= DELETE; 
+// turns off the Write permission using '~' (not) and '&'
+userPerms &= ~WRITE; 
+
+console.log("Updated perms:", userPerms);
 
 // CHALLENGE 11 —  (Fixed Code)
 
