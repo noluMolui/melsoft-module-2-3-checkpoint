@@ -55,7 +55,7 @@ for (let i = 0; i < testValues.length; i++) {
 //  Number('42abc') gives NaN because of letters, but parseInt stops at the letter and gives 42.
 
 // CHALLENGE 3 — Operators
-// ==========================================
+
 
 // Salary math
 let grossSalary = 45000;
@@ -111,3 +111,67 @@ let badge = badges[membership] || "Free Member";
 
 console.log("Badge:", badge);
 
+
+
+// CHALLENGE 11 —  (Fixed Code)
+
+
+let item1Price = Number("199.99");
+let item2Price = Number("49.50");
+let item3Price = Number(125);
+let quantity = Number("2");
+let discountCode = "SAVE10";
+let isLoggedInUser = true;
+let customerAge = 25;
+
+let subtotal = (item1Price + item2Price + item3Price) * quantity;
+let discount = discountCode === "SAVE10" ? 0.1 : 0;
+let discountAmount = subtotal * discount;
+let afterDiscount = subtotal - discountAmount;
+let vat = afterDiscount * 0.15;
+let total = afterDiscount + vat;
+
+let canCheckOut = isLoggedInUser && customerAge > 18;
+let seniorDiscount = customerAge >= 60 ? total * 0.05 : 0;
+let finalTotal = total - seniorDiscount;
+
+console.log("Final Total: R" + finalTotal.toFixed(2));
+
+// CHALLENGE 9 — Payroll & Banking
+
+// turns the text "45000" into a real number.
+let grossInput = "45000";
+let sal = Number(grossInput);
+let taxAmt = sal * 0.25;
+
+let uifAmt = Math.min(sal * 0.01, 177.12);
+
+// flat medical aid fee
+let medAid = 2500;
+
+// 7.5% going to pension
+let pension = sal * 0.075;
+
+let netSalary = sal - (taxAmt + uifAmt + medAid + pension);
+
+// print it out, toFixed(2) makes sure it shows two decimal places for cents
+console.log("Calculated Net Salary:", netSalary.toFixed(2));
+
+
+let principal = 25000;      // starting money
+let annualRate = 0.075;   // 7.5% interest per year
+let n = 12;               // compounded monthly (12 times a year)
+let t = 3;                // leaving it in there for 3 years
+
+let compoundBal = principal * ((1 + (annualRate / n)) ** (n * t));
+console.log("Compound balance:", compoundBal.toFixed(2));
+
+// changing rands to dollars
+let zar = 15750.33;      
+let rate = 18.42;  
+
+// bank takes a 2.5% fee first
+let fee = zar * 0.025;
+// take the fee off rands, then divide by the exchange rate to get dollars
+let usd = (zar - fee) / rate;
+console.log("USD received:", usd.toFixed(2));
