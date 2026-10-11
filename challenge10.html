@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Challenge 10 - User Interaction Flow</title>
+</head>
+<body>
+    <h1>Challenge 10: User Interaction Flow</h1>
+    <p>Please follow the popup prompts to complete registration.</p>
 
+    <script>
+        // 1. Greet the user with an alert box
+        window.alert("Welcome to our application!");
+
+        // 2. Ask for name, strip extra spaces with .trim(), and default to 'Guest' if cancelled or blank
+        let userName = window.prompt("Please enter your name:");
+        if (userName === null || userName.trim() === "") {
+            userName = "Guest";
+        } else {
+            userName = userName.trim();
+        }
+
+        // 3. Ask for age, convert to a number, and validate it
+        let ageInput = window.prompt("Please enter your age:");
+        let userAge = Number(ageInput);
+
+        // Check if it's not a real number (NaN) or outside the 1-120 range
+        if (Number.isNaN(userAge) || userAge < 1 || userAge > 120) {
+            window.alert("Invalid age entered. Process stopped.");
+        } else {
+            // 4. Assign tier using a ternary operator (? :)
+            let tier = userAge < 18 ? "Youth" : userAge <= 59 ? "Adult" : "Senior";
+
+            // 5. Ask to subscribe to the newsletter (stores true or false)
+            let newsletter = window.confirm("Do you want to subscribe to our newsletter?");
+
+            // 6. Displays a summary alert box with all the info
+            window.alert(
+                "Summary:\n" +
+                "Name: " + userName + "\n" +
+                "Age: " + userAge + "\n" +
+                "Tier: " + tier + "\n" +
+                "Subscribed: " + (newsletter ? "Yes" : "No")
+            );
+        }
+
+        
+       // 1. 'Blocking' means the browser freezes and completely pauses all code execution and user interaction on the webpage until the popup is closed. This is bad for modern web apps because it ruins user experience and stops background tasks from running.
+        //2. In a real modern web app, developers use custom HTML modal dialog boxes or custom CSS popup components instead of native browser alerts/prompts.
+       // 3. window.prompt() returns `null` when the user clicks Cancel, and returns an empty string `""` when they leave the text field blank and click OK.
+      
+    </script>
+</body>
+</html>
